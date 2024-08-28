@@ -75,7 +75,7 @@ body:
         - Other
     validations:
       required: false
-    - type: textarea
+  - type: textarea
     id: additional_information
     attributes:
       label: "Additional information"
