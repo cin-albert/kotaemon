@@ -56,7 +56,7 @@ os.environ["HF_HOME"] = str(KH_APP_DATA_DIR / "huggingface")
 os.environ["HF_HUB_CACHE"] = str(KH_APP_DATA_DIR / "huggingface")
 
 # doc directory
-KH_DOC_DIR = this_dir / "docs"
+KH_DOC_DIR = this_dir / "documents"
 
 KH_MODE = "dev"
 KH_FEATURE_USER_MANAGEMENT = True
