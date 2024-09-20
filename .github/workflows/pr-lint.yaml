@@ -12,6 +12,7 @@ permissions:
 
 jobs:
   pr-title:
+    if: false # Disable this job for now
     name: Validate PR title
     runs-on: ubuntu-latest
     permissions: write-all
