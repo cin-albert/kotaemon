@@ -74,6 +74,7 @@ adv = [
     "llama-cpp-python<0.2.8",
     "fastembed",
     "llama-index-vector-stores-qdrant",
+    "unstructured==0.15.8",
 ]
 dev = [
     "black",
