@@ -49,3 +49,7 @@ def test_excel_reader():
         input_file_excel,
     )
     assert len(documents) == 1
+
+
+def test_dummy():
+    return
