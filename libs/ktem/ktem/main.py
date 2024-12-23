@@ -45,11 +45,19 @@ class App(BaseApp):
         with gr.Tabs() as self.tabs:
             if self.f_user_management:
                 from ktem.pages.login import LoginPage
+                from ktem.pages.signup import SignupPage
 
                 with gr.Tab(
                     "Welcome", elem_id="login-tab", id="login-tab"
                 ) as self._tabs["login-tab"]:
-                    self.login_page = LoginPage(self)
+                    with gr.Tab(
+                        "Signup", elem_id="signup-tab", id="signup-tab"
+                    ) as self._tabs["signup-tab"]:
+                        self.signup_page = SignupPage(self)
+                    with gr.Tab(
+                        "Login", elem_id="login-tab", id="login-tab"
+                    ) as self._tabs["login-tab"]:
+                        self.login_page = LoginPage(self)
 
             with gr.Tab(
                 "Chat",
@@ -132,7 +140,7 @@ class App(BaseApp):
                     return list(
                         (
                             gr.update(visible=True)
-                            if k == "login-tab"
+                            if k == "login-tab" or k == "signup-tab"
                             else gr.update(visible=False)
                         )
                         for k in self._tabs.keys()
@@ -167,6 +175,16 @@ class App(BaseApp):
 
             self.subscribe_event(
                 name="onSignIn",
+                definition={
+                    "fn": toggle_login_visibility,
+                    "inputs": [self.user_id],
+                    "outputs": list(self._tabs.values()) + [self.tabs],
+                    "show_progress": "hidden",
+                },
+            )
+
+            self.subscribe_event(
+                name="onSignUp",
                 definition={
                     "fn": toggle_login_visibility,
                     "inputs": [self.user_id],
